@@ -129,13 +129,4 @@ onBeforeUnmount(() => {
     emits('unmounted')
   }
 })
-
-// TODO: 외부 호출용 이벤트 (autoPlay 정책상 안되므로 구현)
-const videoPlay = () => {
-  if (videoJsPlayer.value) {
-    videoJsPlayer.value?.play()
-  }
-}
-
-defineExpose({ videoPlay })
 </script>
