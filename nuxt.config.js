@@ -1,5 +1,6 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  target: 'server',
+  ssr: true,
   head: {
     title: 'nuxt-typescript-videojs',
     htmlAttrs: {
@@ -31,6 +32,18 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    [
+      '@nuxt/typescript-build',
+      {
+        typeCheck: {
+          typescript: {
+            extensions: {
+              vue: true
+            }
+          }
+        }
+      }
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -47,5 +60,21 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    html: {
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true
+      }
+    },
+
+    transpile: ['vuetify/lib'],
+
+    loaders: {
+      extend(config, ctx) {}
+    },
+
+    babel: {
+      compact: true
+    }
   }
 }
